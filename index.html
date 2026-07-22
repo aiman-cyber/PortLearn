@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PortLearn — Learn Port Numbers the Easy Way</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Progress bar shown across the app -->
+    <div class="top-progress" aria-hidden="true">
+      <div class="top-progress__fill" id="topProgressFill"></div>
+    </div>
+
+    <!-- Page transition overlay -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <!-- ===================== HOME VIEW ===================== -->
+    <section class="view view--home is-active" id="view-home" data-view="home">
+      <header class="nav">
+        <div class="nav__brand">
+          <i class="fa-solid fa-anchor brand__icon"></i>
+          <span class="brand__name">Port<span>Learn</span></span>
+        </div>
+        <nav class="nav__links" aria-label="Primary">
+          <a href="#" data-go="home" class="is-active">Home</a>
+          <a href="#" data-go="learn">Learn</a>
+          <a href="#" data-go="quiz">Quiz</a>
+          <a href="#" data-go="reference">Reference</a>
+        </nav>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </header>
+
+      <div class="hero">
+        <div class="hero__badge">
+          <i class="fa-solid fa-graduation-cap"></i> Beginner-friendly networking
+        </div>
+        <h1 class="hero__title">
+          Master <span class="text-accent">Port Numbers</span><br />the beautiful way.
+        </h1>
+        <p class="hero__subtitle">
+          PortLearn adapts to your knowledge level — start as a beginner, grow into a
+          pro, then test yourself with interactive quizzes.
+        </p>
+        <div class="hero__actions">
+          <button class="btn btn--primary" data-go="learn">
+            <i class="fa-solid fa-play"></i> Start Learning
+          </button>
+          <button class="btn btn--ghost" data-go="quiz">
+            <i class="fa-solid fa-list-check"></i> Take a Quiz
+          </button>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <div class="stat__num">3</div>
+            <div class="stat__label">Skill levels</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">20+</div>
+            <div class="stat__label">Ports covered</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">10</div>
+            <div class="stat__label">Quiz questions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="features">
+        <article class="feature-card">
+          <div class="feature-card__icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Three Levels</h3>
+          <p>Beginner, Intermediate, and Advanced tracks — pick the one that fits you.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon"><i class="fa-solid fa-gauge-high"></i></div>
+          <h3>Track Progress</h3>
+          <p>A live progress bar follows your journey through each lesson.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__icon"><i class="fa-solid fa-clipboard-question"></i></div>
+          <h3>Quiz Yourself</h3>
+          <p>Finish a level, then take a quiz to lock in what you learned.</p>
+        </article>
+      </div>
+
+      <footer class="footer">
+        <p>Built for curious learners. <i class="fa-solid fa-heart"></i> PortLearn</p>
+      </footer>
+    </section>
+
+    <!-- ===================== LEARN VIEW ===================== -->
+    <section class="view view--learn" id="view-learn" data-view="learn">
+      <header class="nav">
+        <div class="nav__brand">
+          <i class="fa-solid fa-anchor brand__icon"></i>
+          <span class="brand__name">Port<span>Learn</span></span>
+        </div>
+        <nav class="nav__links" aria-label="Primary">
+          <a href="#" data-go="home">Home</a>
+          <a href="#" data-go="learn" class="is-active">Learn</a>
+          <a href="#" data-go="quiz">Quiz</a>
+          <a href="#" data-go="reference">Reference</a>
+        </nav>
+        <button class="nav__toggle" id="navToggleLearn" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </header>
+
+      <div class="learn-wrap">
+        <aside class="level-selector">
+          <h2 class="level-selector__title"><i class="fa-solid fa-route"></i> Choose your level</h2>
+          <div class="level-cards" id="levelCards">
+            <!-- filled by JS -->
+          </div>
+        </aside>
+
+        <main class="lesson" id="lessonPanel">
+          <div class="lesson__header">
+            <div>
+              <div class="lesson__level-tag" id="lessonLevelTag">Beginner</div>
+              <h2 class="lesson__title" id="lessonTitle">Welcome</h2>
+            </div>
+            <button class="btn btn--ghost btn--sm" data-go="home">
+              <i class="fa-solid fa-house"></i> Home
+            </button>
+          </div>
+
+          <div class="lesson__progress">
+            <div class="progress">
+              <div class="progress__fill" id="lessonProgressFill"></div>
+            </div>
+            <span class="progress__text" id="lessonProgressText">0 / 0</span>
+          </div>
+
+          <div class="lesson__body" id="lessonBody">
+            <!-- lesson content rendered here -->
+          </div>
+
+          <div class="lesson__nav">
+            <button class="btn btn--ghost" id="prevBtn">
+              <i class="fa-solid fa-arrow-left"></i> Previous
+            </button>
+            <span class="lesson__counter" id="lessonCounter">1 / 1</span>
+            <button class="btn btn--primary" id="nextBtn">
+              Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ===================== QUIZ VIEW ===================== -->
+    <section class="view view--quiz" id="view-quiz" data-view="quiz">
+      <header class="nav">
+        <div class="nav__brand">
+          <i class="fa-solid fa-anchor brand__icon"></i>
+          <span class="brand__name">Port<span>Learn</span></span>
+        </div>
+        <nav class="nav__links" aria-label="Primary">
+          <a href="#" data-go="home">Home</a>
+          <a href="#" data-go="learn">Learn</a>
+          <a href="#" data-go="quiz" class="is-active">Quiz</a>
+          <a href="#" data-go="reference">Reference</a>
+        </nav>
+        <button class="nav__toggle" id="navToggleQuiz" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </header>
+
+      <div class="quiz-wrap">
+        <!-- Quiz start -->
+        <div class="quiz-screen is-active" id="quizStart">
+          <div class="quiz-card">
+            <div class="quiz-card__icon"><i class="fa-solid fa-clipboard-question"></i></div>
+            <h2>Ready to test your knowledge?</h2>
+            <p>Pick a level and answer 10 questions. Get instant feedback and a final score.</p>
+            <div class="quiz-levels" id="quizLevelButtons">
+              <button class="level-pill" data-level="beginner">
+                <i class="fa-solid fa-seedling"></i> Beginner
+              </button>
+              <button class="level-pill" data-level="intermediate">
+                <i class="fa-solid fa-bolt"></i> Intermediate
+              </button>
+              <button class="level-pill" data-level="advanced">
+                <i class="fa-solid fa-rocket"></i> Advanced
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz active -->
+        <div class="quiz-screen" id="quizActive">
+          <div class="quiz-card">
+            <div class="quiz-meta">
+              <span class="quiz-meta__level" id="quizLevelTag">Beginner</span>
+              <span class="quiz-meta__count" id="quizCount">Question 1 of 10</span>
+            </div>
+            <div class="progress">
+              <div class="progress__fill" id="quizProgressFill"></div>
+            </div>
+            <h2 class="quiz__question" id="quizQuestion">Question?</h2>
+            <div class="quiz__options" id="quizOptions"></div>
+            <div class="quiz__feedback" id="quizFeedback" hidden>
+              <i class="fa-solid fa-circle-check"></i>
+              <span id="quizFeedbackText"></span>
+            </div>
+            <button class="btn btn--primary" id="quizNextBtn" disabled>
+              Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz result -->
+        <div class="quiz-screen" id="quizResult">
+          <div class="quiz-card quiz-card--result">
+            <div class="result-ring" id="resultRing">
+              <div class="result-ring__value" id="resultScore">0%</div>
+            </div>
+            <h2 id="resultTitle">Great job!</h2>
+            <p id="resultMessage">You answered X out of Y correctly.</p>
+            <div class="result-stats" id="resultStats"></div>
+            <div class="result-actions">
+              <button class="btn btn--primary" id="retryBtn">
+                <i class="fa-solid fa-rotate-right"></i> Retry
+              </button>
+              <button class="btn btn--ghost" data-go="learn">
+                <i class="fa-solid fa-book"></i> Back to Learn
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== REFERENCE VIEW ===================== -->
+    <section class="view view--reference" id="view-reference" data-view="reference">
+      <header class="nav">
+        <div class="nav__brand">
+          <i class="fa-solid fa-anchor brand__icon"></i>
+          <span class="brand__name">Port<span>Learn</span></span>
+        </div>
+        <nav class="nav__links" aria-label="Primary">
+          <a href="#" data-go="home">Home</a>
+          <a href="#" data-go="learn">Learn</a>
+          <a href="#" data-go="quiz">Quiz</a>
+          <a href="#" data-go="reference" class="is-active">Reference</a>
+        </nav>
+        <button class="nav__toggle" id="navToggleRef" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </header>
+
+      <div class="ref-wrap">
+        <div class="ref-head">
+          <h2>Port Reference</h2>
+          <p>A quick, searchable list of the most important port numbers.</p>
+          <div class="ref-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="refSearch" placeholder="Search by port, name or protocol..." />
+          </div>
+        </div>
+        <div class="ref-table" id="refTable"></div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
